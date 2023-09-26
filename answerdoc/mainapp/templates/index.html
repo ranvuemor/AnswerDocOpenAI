@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Uploaded files:</p>
+<ul>
+    {% for obj in pdfs %}
+    <form method = 'POST' action = '' enctype = "multipart/form-data">
+        {% csrf_token %}
+        <li>
+            <a href="{{ obj.pdf.url }}">{{ obj.title }}</a>
+            <small>(Uploaded at: {{ obj.up_date }})</small>&nbsp;&nbsp;
+            <input type="hidden" name = "file" value="{{ obj.pdf }}">
+            <button type = "submit">Delete</button>
+        </li>
+    </form>
+    <small>{{x}}</small>
+    {% endfor %}
+</ul>
+
+<p><a href = "{% url 'UploadPDF' %}">Upload new document</a></p>
+{% endblock %}

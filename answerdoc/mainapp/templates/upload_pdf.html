@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method = 'post' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value = "Submit">
+</form>
+
+<p><a href="{% url 'index' %}">Return to home</a></p>
+{% endblock %}
